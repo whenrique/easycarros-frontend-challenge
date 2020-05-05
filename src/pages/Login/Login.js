@@ -14,10 +14,8 @@ const Login = () => {
   const history = useHistory()
   const formik = useFormik({
     initialValues: {
-      email: 'frontend-dev@easycarros.com',
-      password: 'Fr0nt3ndR0ck5!'
-      // email: '',
-      // password: ''
+      email: '',
+      password: ''
     },
     validationSchema,
     onSubmit: fields => signin(fields, handleSubmitSuccess, handleSubmitError)
@@ -33,7 +31,7 @@ const Login = () => {
 
   useEffect(() => {
     if (Cookie.get(TOKEN_COOKIE)) {
-      history.push('/vehicles')
+      // history.push('/vehicles')
     }
   }, [history])
 
@@ -44,10 +42,10 @@ const Login = () => {
         <Link to="/" title="EasyCarros - homepage">
           <s.Logo />
         </Link>
-        <Form method='POST' handleSubmit={formik.handleSubmit}>
-          <Label htmlFor="email" label="Username:" />
+        <Form method='POST' onSubmit={formik.handleSubmit}>
+          <Label htmlFor="email" >Username:</Label>
           <Input placeholder="Your email" name="email" id="email" type="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleChange} />
-          <Label htmlFor="password" label="Password:" />
+          <Label htmlFor="password">Password:</Label>
           <Input placeholder="Your password" name="password" id="password" type="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} />
           <s.ErrorList>
             {(formik.errors.email && formik.touched.email) && (
@@ -60,7 +58,7 @@ const Login = () => {
               <s.ErrorItem>&bull; {FORM_MESSAGES.ERROR}</s.ErrorItem>
             )}
           </s.ErrorList>
-          <Button value="Sign In" type="submit" />
+          <Button type="submit">Sign In</Button>
         </Form>
       </s.Wrapper>
     </Layout>

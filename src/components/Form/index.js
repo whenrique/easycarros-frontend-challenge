@@ -1,7 +1,4 @@
-import { Form } from './Form'
-import { Input } from './Input'
-import { Label } from './Label'
-import { Button } from './Button'
+import { Form, Input, Label, Button } from './Form'
 
 export {
   Form,
