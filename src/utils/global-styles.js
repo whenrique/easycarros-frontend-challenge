@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   :root {
     font-size: 10px;
-    font-size: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
 
   * {

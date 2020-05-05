@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from 'utils/theme'
 import Login from 'pages/Login'
 import Vehicles from 'pages/Vehicles'
+import Footer from 'components/Footer'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Vehicles />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </ThemeProvider>
   )
