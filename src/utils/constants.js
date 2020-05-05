@@ -4,11 +4,11 @@ export const TOKEN_COOKIE = 'token'
 
 export const FORM_MESSAGES = {
   EMAIL: {
-    VALID: 'Preencha com um e-mail válido.',
-    REQUIRED: 'O campo username é obrigatório.'
+    VALID: 'Type a valid email.',
+    REQUIRED: 'Username field is required.'
   },
   PASSWORD: {
-    REQUIRED: 'O campo password é obrigatório.'
+    REQUIRED: 'Password field is required.'
   },
-  ERROR: 'Credenciais inválidas.'
+  ERROR: 'Invalid credentials.'
 }

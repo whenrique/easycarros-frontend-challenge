@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import * as s from './style'
 
 export const Form = ({ children, handleSubmit, method }) => (
-  <s.Wrapper onSubmit={handleSubmit} method={method}>
+  <s.Wrapper onSubmit={handleSubmit} method={method} noValidate>
     {children}
   </s.Wrapper>
 )
