@@ -1,29 +1,41 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import Cookie from 'js-cookie'
 import { useFormik } from 'formik'
 import signin from 'utils/signin'
 import Layout from 'components/Layout'
 import { Form, Label, Input, Button } from 'components/Form'
 import * as s from './style'
 import validationSchema from './yup'
-import { FORM_MESSAGES } from 'utils/constants'
+import { FORM_MESSAGES, TOKEN_COOKIE } from 'utils/constants'
 
 const Login = () => {
   const [error, setError] = useState(false)
+  const history = useHistory()
   const formik = useFormik({
     initialValues: {
-      // email: 'frontend-dev@easycarros.com',
-      // password: 'Fr0nt3ndR0ck5!'
-      email: '',
-      password: ''
+      email: 'frontend-dev@easycarros.com',
+      password: 'Fr0nt3ndR0ck5!'
+      // email: '',
+      // password: ''
     },
     validationSchema,
-    onSubmit: fields => signin(fields, handleSubmitError)
+    onSubmit: fields => signin(fields, handleSubmitSuccess, handleSubmitError)
   })
 
   const handleSubmitError = () => {
     setError(true)
   }
+
+  const handleSubmitSuccess = () => {
+    history.push('/vehicles')
+  }
+
+  useEffect(() => {
+    if (Cookie.get(TOKEN_COOKIE)) {
+      history.push('/vehicles')
+    }
+  }, [history])
 
   return (
     <Layout>
