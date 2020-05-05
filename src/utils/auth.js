@@ -19,4 +19,6 @@ export const signin = async (fields = {}, handleSubmitSuccess = Function, handle
   }
 }
 
-export const isAuth = (cookie = '') => !!cookie
+export const isAuth = (cookie = '') => {
+  return !!Cookie.get(cookie)
+}
