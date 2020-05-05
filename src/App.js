@@ -5,10 +5,12 @@ import theme from 'utils/theme'
 import Login from 'pages/Login'
 import Vehicles from 'pages/Vehicles'
 import Footer from 'components/Footer'
+import GlobalStyle from 'utils/global-styles'
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Router>
         <Switch>
           <Route exact path="/">
