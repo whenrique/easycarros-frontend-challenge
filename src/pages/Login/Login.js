@@ -55,7 +55,7 @@ const Login = () => {
               <s.ErrorItem>&bull; {formik.errors.password}</s.ErrorItem>
             )}
             {(error) && (
-              <s.ErrorItem>&bull; {FORM_MESSAGES.ERROR}</s.ErrorItem>
+              <s.ErrorItem>&bull; {FORM_MESSAGES.INVALID}</s.ErrorItem>
             )}
           </s.ErrorList>
           <Button type="submit">Sign In</Button>

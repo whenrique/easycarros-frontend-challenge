@@ -8,7 +8,7 @@ export const Form = styled.form`
   width: 100%;
 
   > * {
-    margin: 0.6rem;
+    margin: 0.6rem 0;
   }
 `
 

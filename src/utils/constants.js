@@ -10,5 +10,11 @@ export const FORM_MESSAGES = {
   PASSWORD: {
     REQUIRED: 'Password field is required.'
   },
-  ERROR: 'Invalid credentials.'
+  INVALID: 'Invalid credentials.',
+  PLATE: {
+    VALID: 'Type a valid plate. Eg.: ABC1234',
+    REQUIRED: 'Plate field is required.'
+  }
 }
+
+export const PLATE_REGEX = /[a-z]{3}[0-9]{4}/gi
