@@ -2,7 +2,7 @@ import Cookie from 'js-cookie'
 import request from './request'
 import { API_URL, TOKEN_COOKIE } from './constants'
 
-const signin = async fields => {
+const signin = async (fields, handleSubmitError) => {
   try {
     const config = {
       method: 'post',
@@ -13,8 +13,8 @@ const signin = async fields => {
     }
     const { data } = await request(config)
     Cookie.set(TOKEN_COOKIE, data.data.token)
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    return handleSubmitError()
   }
 }
 

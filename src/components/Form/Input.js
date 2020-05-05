@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as s from './style'
 
-export const Input = ({ placeholder, name, id, type, value, onChange }) => (
-  <s.Input placeholder={placeholder} name={name} id={id} type={type} value={value} onChange={onChange} />
+export const Input = ({ placeholder, name, id, type, value, onChange, onBlur }) => (
+  <s.Input placeholder={placeholder} name={name} id={id} type={type} value={value} onChange={onChange} onBlur={onBlur} />
 )
 
 Input.propTypes = {
@@ -12,5 +12,6 @@ Input.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func
 }

@@ -17,3 +17,14 @@ export const Logo = styled(LogoSVG)`
   width: 300px;
   fill: ${({ theme }) => theme.color.oriente};
 `
+
+export const ErrorList = styled.ul`
+  padding: 1rem;
+  border-radius: 0.4rem;
+  list-style: none;
+`
+
+export const ErrorItem = styled.li`
+  color: ${({ theme }) => theme.color.error[800]};
+  font-size: 1.4rem;
+`
