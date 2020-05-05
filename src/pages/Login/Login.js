@@ -31,7 +31,7 @@ const Login = () => {
 
   useEffect(() => {
     if (Cookie.get(TOKEN_COOKIE)) {
-      // history.push('/vehicles')
+      history.push('/vehicles')
     }
   }, [history])
 
