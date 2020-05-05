@@ -12,7 +12,7 @@ export const signin = async (fields = {}, handleSubmitSuccess = Function, handle
       }
     }
     const { data } = await request(config)
-    Cookie.set(TOKEN_COOKIE, data.data.token)
+    Cookie.set(TOKEN_COOKIE, data.data.token, { expires: 7 })
     return handleSubmitSuccess()
   } catch (err) {
     return handleSubmitError()
