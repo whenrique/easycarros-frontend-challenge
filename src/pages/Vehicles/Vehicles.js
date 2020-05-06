@@ -1,24 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import Cookie from 'js-cookie'
 import { useFormik } from 'formik'
+import { PlateContext } from 'providers/PlateProvider'
 import Plates from 'components/Plates'
 import Layout from 'components/Layout'
 import validationSchema from './yup'
 import * as s from './style'
-import { TOKEN_COOKIE } from 'utils/constants'
+import { TOKEN_COOKIE, STATUS } from 'utils/constants'
 
-const Vehicles = () => {
+const Vehicles = ({ addPlate, deletePlate }) => {
+  const { plates, setStatus } = useContext(PlateContext)
+  const history = useHistory()
   const formik = useFormik({
     initialValues: {
       plate: ''
     },
     validationSchema,
-    onSubmit: field => {
-      console.log('submit field', field)
+    onSubmit: (field, { resetForm }) => {
+      addPlate(field)
+      setStatus(STATUS.pending)
+      resetForm()
     }
   })
-  const history = useHistory()
 
   useEffect(() => {
     if (!Cookie.get(TOKEN_COOKIE)) {
@@ -42,11 +47,16 @@ const Vehicles = () => {
               )}
             </s.ErrorList>
           </s.AddVehicle>
-          <Plates />
+          <Plates plates={plates} deletePlate={deletePlate} />
         </s.Wrapper>
       </Layout>
     </>
   )
+}
+
+Vehicles.propTypes = {
+  addPlate: PropTypes.func,
+  deletePlate: PropTypes.func
 }
 
 export default Vehicles

@@ -2,15 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as s from './style'
 
-const Plate = ({ plateID }) => (
-  <s.Wrapper>
-    {plateID}
-    <s.Delete onClick={() => console.log('deletou')} />
-  </s.Wrapper>
-)
+const Plate = ({ plate, plateId, deletePlate }) => {
+  return (
+    <s.Wrapper>
+      {plate}
+      <s.Delete onClick={() => deletePlate(plate, plateId)} />
+    </s.Wrapper>
+  )
+}
 
 Plate.propTypes = {
-  plateID: PropTypes.string
+  plate: PropTypes.string,
+  plateId: PropTypes.string,
+  deletePlate: PropTypes.func
 }
 
 export default Plate
