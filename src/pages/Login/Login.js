@@ -7,7 +7,7 @@ import Layout from 'components/Layout'
 import { Form, Label, Input, Button } from 'components/Form'
 import * as s from './style'
 import validationSchema from './yup'
-import { FORM_MESSAGES, TOKEN_COOKIE } from 'utils/constants'
+import { FORM_MESSAGE, TOKEN_COOKIE } from 'utils/constants'
 import { PlateContext } from 'providers/PlateProvider'
 
 const Login = () => {
@@ -60,7 +60,7 @@ const Login = () => {
               <s.ErrorItem>&bull; {formik.errors.password}</s.ErrorItem>
             )}
             {(error) && (
-              <s.ErrorItem>&bull; {FORM_MESSAGES.INVALID}</s.ErrorItem>
+              <s.ErrorItem>&bull; {FORM_MESSAGE.INVALID}</s.ErrorItem>
             )}
           </s.ErrorList>
           <Button type="submit">Sign In</Button>

@@ -13,7 +13,7 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import GlobalStyle from 'utils/global-styles'
 import { isAuth } from 'utils/auth'
-import { TOKEN_COOKIE, STATUS } from 'utils/constants'
+import { TOKEN_COOKIE, STATUS, REQUEST_MESSAGE } from 'utils/constants'
 import { setPlate, getPlates, deletePlate } from 'utils/plates'
 
 toast.configure({
@@ -30,8 +30,16 @@ const App = () => {
   const [status, setStatus] = useState(STATUS.pending)
 
   const addPlate = async (plate) => {
-    await setPlate(plate)
-    toast(`Vehicle ${plate.plate} was added`)
+    try {
+      const { data } = await setPlate(plate)
+
+      if (!data) throw new Error(REQUEST_MESSAGE.ERROR.CONNECTION)
+
+      toast(`Vehicle ${plate.plate} was added`)
+    } catch (err) {
+      toast(err.message, Slide)
+      return err
+    }
   }
 
   const removePlate = (plate, plateId) => {
@@ -41,8 +49,16 @@ const App = () => {
         {
           label: 'Yes',
           onClick: async () => {
-            await deletePlate(plateId)
-            setStatus(STATUS.pending)
+            try {
+              const status = await deletePlate(plateId)
+
+              if (status !== 204) throw new Error(REQUEST_MESSAGE.ERROR.CONNECTION)
+
+              setStatus(STATUS.pending)
+            } catch (err) {
+              toast(err.message, Slide)
+              return err
+            }
           }
         },
         {
@@ -62,10 +78,14 @@ const App = () => {
     async function fetchPlates () {
       try {
         const { data } = await getPlates()
+
+        if (!data) throw new Error(REQUEST_MESSAGE.ERROR.CONNECTION)
+
         setPlates(data)
         setStatus(STATUS.resolved)
       } catch (err) {
-        console.log(err)
+        toast(err.message, Slide)
+        return err
       }
     }
     fetchPlates()
