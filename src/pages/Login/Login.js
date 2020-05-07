@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Cookie from 'js-cookie'
 import { useFormik } from 'formik'
@@ -8,8 +8,10 @@ import { Form, Label, Input, Button } from 'components/Form'
 import * as s from './style'
 import validationSchema from './yup'
 import { FORM_MESSAGES, TOKEN_COOKIE } from 'utils/constants'
+import { PlateContext } from 'providers/PlateProvider'
 
 const Login = () => {
+  const { setAuth } = useContext(PlateContext)
   const [error, setError] = useState(false)
   const history = useHistory()
   const formik = useFormik({
@@ -18,7 +20,10 @@ const Login = () => {
       password: ''
     },
     validationSchema,
-    onSubmit: fields => signin(fields, handleSubmitSuccess, handleSubmitError)
+    onSubmit: fields => {
+      signin(fields, handleSubmitSuccess, handleSubmitError)
+      setAuth(true)
+    }
   })
 
   const handleSubmitError = () => {

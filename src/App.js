@@ -29,11 +29,6 @@ const App = () => {
   const [plates, setPlates] = useState([])
   const [status, setStatus] = useState(STATUS.pending)
 
-  const showHeader = () => {
-    const authenticated = isAuth(TOKEN_COOKIE)
-    setAuth(authenticated)
-  }
-
   const addPlate = async (plate) => {
     await setPlate(plate)
     toast(`Vehicle ${plate.plate} was added`)
@@ -59,6 +54,11 @@ const App = () => {
   }
 
   useEffect(() => {
+    const authenticated = isAuth(TOKEN_COOKIE)
+    setAuth(authenticated)
+  }, [])
+
+  useEffect(() => {
     async function fetchPlates () {
       try {
         const { data } = await getPlates()
@@ -68,7 +68,6 @@ const App = () => {
         console.log(err)
       }
     }
-    showHeader()
     fetchPlates()
   }, [status])
 
@@ -79,7 +78,7 @@ const App = () => {
         { auth && (
           <Header />
         )}
-        <PlateContext.Provider value={{ plates, status, setStatus }}>
+        <PlateContext.Provider value={{ plates, status, setStatus, setAuth }}>
           <Switch>
             <Route exact path="/">
               <Login />
