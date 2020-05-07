@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# EasyCarros - Front-End Challenge
 
-## Available Scripts
+## Intro
 
-In the project directory, you can run:
+This front-end challenge were built with [Create React App](https://create-react-app.dev/) (CRA) to [EasyCarros](https://easycarros.com/) development team.
 
-### `yarn start`
+This challenge is using libraries like [styled-components](https://styled-components.com/)and [styled-icons](https://styled-icons.js.org/).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Every single component were built aimed a better code experience and organization. They are using `styled-components` to style their elements and `prop-types` to check if theirs props are passed right from their parents. Some icons are available with `styled-icons` too.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Axios was choosed to make request data function. This function are availble into [request.js](src/utils/request.js) file.
 
-### `yarn test`
+Here are constants like *custom messages*, *status*, *plate regex*, etc available to use into [constants.js](src/utils/contants.js) file. Other utilitaries functions are available into the [utils folder](src/utils)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application is using hooks from ReactJS core to managing state and a plates provider with Context API. Besides, `useEffect()` hook is used to control the life cycle of application. To manage routes the [react-router-dom](https://reacttraining.com/react-router/) were choosed.
 
-### `yarn build`
+Absolute paths were setup to improve readability and import statements.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[ESLint](https://eslint.org/) and [EditorConfig](https://editorconfig.org/) were added as code linter to helps maintain consistent code style.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To start development, run the followed commands into your terminal app
 
-### `yarn eject`
+```bash
+$ npm install # to install used packages
+$ npm run start # to init development environment
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Your development environment will be available in http://localhost:3000
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To build that repository, run the followed command
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+$ npm run build
+```
 
-## Learn More
+All files will be optimized to use in the production environment and available into `build` folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Folder structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Currently, the folders used are from [CRA](https://create-react-app.dev/) structure, with a few adds.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+src/
+  components/ # hold all components available
+  pages/ # hold pages availabe
+  providers/ # hold the PlateContext provider
+  static/ # to static files as logo, icons, etc
+  utils/ # tool belt with some functions and constants
+  App.js # wrapp the whole application
+  index.js # init application
+  index.css # basic styles
+```
